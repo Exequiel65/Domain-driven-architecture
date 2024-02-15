@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.1.28" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Packgroup.Ecommerce.Infraestructura.Data\Packgroup.Ecommerce.Infraestructura.Data.csproj" />
+    <ProjectReference Include="..\PackGroup.Ecommerce.Infrastructura.Interface\PackGroup.Ecommerce.Infrastructura.Interface.csproj" />
+    <ProjectReference Include="..\Packgroup.Ecommerce.Transversal.Commin\Packgroup.Ecommerce.Transversal.Common.csproj" />
+  </ItemGroup>
+
+</Project>
