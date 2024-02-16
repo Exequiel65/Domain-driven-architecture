@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Packgroup.Ecommerce.Aplication.DTO;
 using Packgroup.Ecommerce.Aplication.Interface;
 
@@ -19,7 +18,7 @@ namespace Packgroup.Ecommerce.Services.WebApi.Controllers
         #region Metodos Sincronos
 
         [HttpPost("create")]
-        public IActionResult Insert([FromBody]CustomersDTO customerDTO)
+        public IActionResult Insert([FromBody] CustomersDTO customerDTO)
         {
             if (customerDTO == null) return BadRequest();
 
@@ -107,7 +106,7 @@ namespace Packgroup.Ecommerce.Services.WebApi.Controllers
         [HttpDelete("delete-a/{customerID}")]
         public async Task<IActionResult> DeleteAsync([FromRoute] string customerId)
         {
-           
+
             var response = await _customerApplication.DeleteAsync(customerId);
 
             if (!response.IsSuccess) return BadRequest(response);
