@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Packgroup.Ecommerce.Domain.Entity;
+using System.Collections.Generic;
 using System.Threading.Tasks;
-using Packgroup.Ecommerce.Domain.Entity;
 namespace Packgroup.Ecommerce.Domain.Interface
 {
     public interface ICustomerDomain

@@ -1,8 +1,7 @@
-﻿using System;
+﻿using Dapper;
 using Packgroup.Ecommerce.Domain.Entity;
-using PackGroup.Ecommerce.Infrastructura.Interface;
 using Packgroup.Ecommerce.Transversal.Common;
-using Dapper;
+using PackGroup.Ecommerce.Infrastructura.Interface;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -21,7 +20,7 @@ namespace Packgroup.Ecommerce.Infraestructura.Repository
 
         public bool Insert(Customers customers)
         {
-            using(var conection = _conectionFactory.GetConnection)
+            using (var conection = _conectionFactory.GetConnection)
             {
 
                 var query = "CustomersInsert";

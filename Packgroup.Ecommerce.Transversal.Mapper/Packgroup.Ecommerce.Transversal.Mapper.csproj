@@ -6,9 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Packgroup.Ecommerce.Aplication.DTO\Packgroup.Ecommerce.Aplication.DTO.csproj" />
     <ProjectReference Include="..\Packgroup.Ecommerce.Domain.Entity\Packgroup.Ecommerce.Domain.Entity.csproj" />
-    <ProjectReference Include="..\Packgroup.Ecommerce.Domain.Interface\Packgroup.Ecommerce.Domain.Interface.csproj" />
-    <ProjectReference Include="..\PackGroup.Ecommerce.Infrastructura.Interface\PackGroup.Ecommerce.Infrastructura.Interface.csproj" />
   </ItemGroup>
 
 </Project>

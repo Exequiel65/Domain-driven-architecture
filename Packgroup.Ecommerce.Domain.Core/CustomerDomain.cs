@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Packgroup.Ecommerce.Domain.Entity;
+﻿using Packgroup.Ecommerce.Domain.Entity;
 using Packgroup.Ecommerce.Domain.Interface;
 using PackGroup.Ecommerce.Infrastructura.Interface;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 namespace Packgroup.Ecommerce.Domain.Core
 {
     public class CustomerDomain : ICustomerDomain
@@ -22,7 +20,7 @@ namespace Packgroup.Ecommerce.Domain.Core
             return _repository.Insert(customer);
         }
 
-        public bool Úpdate(Customers customer)
+        public bool Update(Customers customer)
         {
             return _repository.Update(customer);
         }

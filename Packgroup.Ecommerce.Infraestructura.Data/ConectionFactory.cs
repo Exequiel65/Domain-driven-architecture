@@ -1,8 +1,7 @@
-﻿using System;
+﻿using Microsoft.Extensions.Configuration;
+using Packgroup.Ecommerce.Transversal.Common;
 using System.Data;
 using System.Data.SqlClient;
-using Microsoft.Extensions.Configuration;
-using Packgroup.Ecommerce.Transversal.Common;
 
 namespace Packgroup.Ecommerce.Infraestructura.Data
 {
