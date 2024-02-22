@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Packgroup.Ecommerce.Aplication.DTO;
 using Packgroup.Ecommerce.Aplication.Interface;
 
@@ -6,6 +7,7 @@ namespace Packgroup.Ecommerce.Services.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class CustomerController : ControllerBase
     {
         private readonly ICustomerApplication _customerApplication;
