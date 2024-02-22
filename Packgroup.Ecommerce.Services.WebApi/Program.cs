@@ -10,11 +10,16 @@ using Packgroup.Ecommerce.Transversal.Mapper;
 using PackGroup.Ecommerce.Infrastructura.Interface;
 
 var builder = WebApplication.CreateBuilder(args);
-
-
+var myPolicy = "policyApiCommerce";
 // Add services to the container.
 //AutoMapper
 builder.Services.AddAutoMapper(x => x.AddProfile(new MappingsProfile()));
+
+//cors
+builder.Services.AddCors(options => options.AddPolicy(myPolicy, b => b.WithOrigins(builder.Configuration["Config:OriginCors"])
+                                                                        .AllowAnyHeader()
+                                                                        .AllowAnyMethod()));
+                                                                        
 
 builder.Services.AddSingleton<IConectionFactory, ConectionFactory>();
 builder.Services.AddScoped<ICustomerApplication, CustomerApplication>();
@@ -82,6 +87,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors(myPolicy);
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
