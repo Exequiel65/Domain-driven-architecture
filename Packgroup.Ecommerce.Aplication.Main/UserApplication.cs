@@ -11,10 +11,12 @@ namespace Packgroup.Ecommerce.Aplication.Main
     {
         private readonly IUsersDomain _usersDomain;
         private readonly IMapper _mapper;
-        public UserApplication(IUsersDomain usersDomain, IMapper mapper)
+        private readonly IAppLogger<UserApplication> _logger;
+        public UserApplication(IUsersDomain usersDomain, IMapper mapper, IAppLogger<UserApplication> logger)
         {
             _mapper = mapper;
             _usersDomain = usersDomain;
+            _logger = logger;
         }
         public Response<UsersDTO> Authenticate(string username, string password)
         {
@@ -30,16 +32,20 @@ namespace Packgroup.Ecommerce.Aplication.Main
                 response.Data = _mapper.Map<UsersDTO>(user);
                 response.IsSuccess = true;
                 response.Message = "Autenticación exitosa";
+                _logger.LogInformation("Autenticación exitosa");
                 return response;
             }
             catch (InvalidOperationException ex)
             {
                 response.IsSuccess = true;
                 response.Message = "Usuario no existe";
+                _logger.LogWarning("Usuario no existe");
+                _logger.LogWarning(ex.Message);
             }
             catch (Exception e)
             {
                 response.Message = e.Message;
+                _logger.LogError(e.Message);
             }
             return response;
         }

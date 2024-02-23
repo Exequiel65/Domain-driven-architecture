@@ -9,6 +9,7 @@ using Packgroup.Ecommerce.Infraestructura.Data;
 using Packgroup.Ecommerce.Infraestructura.Repository;
 using Packgroup.Ecommerce.Services.WebApi.Helpers;
 using Packgroup.Ecommerce.Transversal.Common;
+using Packgroup.Ecommerce.Transversal.Logging;
 using Packgroup.Ecommerce.Transversal.Mapper;
 using PackGroup.Ecommerce.Infrastructura.Interface;
 using System.Text;
@@ -79,6 +80,7 @@ builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
 builder.Services.AddScoped<IUsers, UserRepository>();
 builder.Services.AddScoped<IUsersDomain, UserDomain>();
 builder.Services.AddScoped<IUsersApplication, UserApplication>();
+builder.Services.AddScoped(typeof(IAppLogger<>), typeof(LoggerAdapter<>));
 
 // configure jwt
 var appSettingsSection = builder.Configuration.GetSection("Config");

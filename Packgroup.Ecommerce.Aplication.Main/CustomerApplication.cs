@@ -14,10 +14,12 @@ namespace Packgroup.Ecommerce.Aplication.Main
     {
         private readonly ICustomerDomain _customerDomain;
         private readonly IMapper _mapper;
-        public CustomerApplication(ICustomerDomain customerDomain, IMapper mapper)
+        private readonly IAppLogger<CustomerApplication> _logger;
+        public CustomerApplication(ICustomerDomain customerDomain, IMapper mapper, IAppLogger<CustomerApplication> logger)
         {
             _customerDomain = customerDomain;
             _mapper = mapper;
+            _logger = logger;
         }
 
         #region Métodos Síncronos
@@ -108,11 +110,13 @@ namespace Packgroup.Ecommerce.Aplication.Main
                 {
                     response.IsSuccess = true;
                     response.Message = "Consulta Exitosa!!";
+                    _logger.LogInformation("Consulta Exitosa!!");
                 }
             }
             catch (Exception e)
             {
                 response.Message = e.Message;
+                _logger.LogInformation($"{e.Message}");
             }
             return response;
         }
