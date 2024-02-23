@@ -9,7 +9,6 @@ using Packgroup.Ecommerce.Infraestructura.Data;
 using Packgroup.Ecommerce.Infraestructura.Repository;
 using Packgroup.Ecommerce.Services.WebApi.Helpers;
 using Packgroup.Ecommerce.Transversal.Common;
-using Packgroup.Ecommerce.Transversal.Logging;
 using Packgroup.Ecommerce.Transversal.Mapper;
 using PackGroup.Ecommerce.Infrastructura.Interface;
 using System.Text;
@@ -71,7 +70,7 @@ builder.Services.AddSwaggerGen(options =>
 builder.Services.AddCors(options => options.AddPolicy(myPolicy, b => b.WithOrigins(builder.Configuration["Config:OriginCors"])
                                                                         .AllowAnyHeader()
                                                                         .AllowAnyMethod()));
-                                                                        
+
 
 builder.Services.AddSingleton<IConectionFactory, ConectionFactory>();
 builder.Services.AddScoped<ICustomerApplication, CustomerApplication>();

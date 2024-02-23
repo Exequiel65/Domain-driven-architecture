@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Packgroup.Ecommerce.Domain.Entity
+﻿namespace Packgroup.Ecommerce.Domain.Entity
 {
     public class Users
     {

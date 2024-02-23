@@ -6,7 +6,7 @@ using System.Data;
 
 namespace Packgroup.Ecommerce.Infraestructura.Repository
 {
-    public class UserRepository: IUsers
+    public class UserRepository : IUsers
     {
         private readonly IConectionFactory _conectionFactory;
 

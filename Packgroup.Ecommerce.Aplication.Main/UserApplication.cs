@@ -7,7 +7,7 @@ using System;
 
 namespace Packgroup.Ecommerce.Aplication.Main
 {
-    public class UserApplication: IUsersApplication
+    public class UserApplication : IUsersApplication
     {
         private readonly IUsersDomain _usersDomain;
         private readonly IMapper _mapper;

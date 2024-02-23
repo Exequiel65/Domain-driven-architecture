@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Packgroup.Ecommerce.Aplication.DTO
+﻿namespace Packgroup.Ecommerce.Aplication.DTO
 {
     public class UsersDTO
     {
