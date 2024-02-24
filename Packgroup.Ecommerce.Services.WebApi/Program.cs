@@ -12,7 +12,6 @@ using Packgroup.Ecommerce.Transversal.Common;
 using Packgroup.Ecommerce.Transversal.Logging;
 using Packgroup.Ecommerce.Transversal.Mapper;
 using PackGroup.Ecommerce.Infrastructura.Interface;
-using System.Net;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -134,22 +133,6 @@ builder.Services.AddAuthentication(op =>
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-
-builder.Services.AddHttpsRedirection(options =>
-{
-    options.RedirectStatusCode = (int)HttpStatusCode.TemporaryRedirect;
-    options.HttpsPort = 5001;
-});
-
-if (!builder.Environment.IsDevelopment())
-{
-    builder.Services.AddHttpsRedirection(options =>
-    {
-        options.RedirectStatusCode = (int)HttpStatusCode.PermanentRedirect;
-        options.HttpsPort = 443;
-    });
-}
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
