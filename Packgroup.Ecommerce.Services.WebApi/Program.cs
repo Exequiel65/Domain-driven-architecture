@@ -3,6 +3,7 @@ using Packgroup.Ecommerce.Services.WebApi.Modules.Authentication;
 using Packgroup.Ecommerce.Services.WebApi.Modules.Mapper;
 using Packgroup.Ecommerce.Services.WebApi.Modules.Feature;
 using Packgroup.Ecommerce.Services.WebApi.Modules.Injection;
+using Packgroup.Ecommerce.Services.WebApi.Modules.Validator;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +22,7 @@ builder.Services.AddAuthentication(builder.Configuration);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddValidator();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
