@@ -13,7 +13,7 @@ using System.Text;
 namespace Packgroup.Ecommerce.Services.WebApi.Controllers.v1
 {
 
-    [Route("api/[controller]")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
     [Authorize]
     [ApiVersion("1.0")]
