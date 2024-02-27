@@ -43,6 +43,11 @@ namespace Packgroup.Ecommerce.Services.WebApi.Modules.Swagger
                 }
             };
 
+            if (description.IsDeprecated)
+            {
+                info.Description += "\nEsta versíon de la API ha quedado obsoleta";   
+            }
+
             return info;
         }
     }

@@ -16,7 +16,7 @@ namespace Packgroup.Ecommerce.Services.WebApi.Controllers.v1
     [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
     [Authorize]
-    [ApiVersion("1.0")]
+    [ApiVersion("1.0", Deprecated = true)]
     public class UserController : ControllerBase
     {
         private readonly IUsersApplication _usersApplication;
