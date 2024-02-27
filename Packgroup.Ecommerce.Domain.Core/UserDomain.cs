@@ -6,14 +6,14 @@ namespace Packgroup.Ecommerce.Domain.Core
 {
     public class UserDomain : IUsersDomain
     {
-        private readonly IUsers _usersRepository;
-        public UserDomain(IUsers users)
+        private readonly IUnitOfWork _unitOfWork;
+        public UserDomain(IUnitOfWork unitOfWork)
         {
-            _usersRepository = users;
+            _unitOfWork = unitOfWork;
         }
         public Users Authenticate(string username, string password)
         {
-            return _usersRepository.Authenticate(username, password);
+            return _unitOfWork.Users.Authenticate(username, password);
         }
     }
 }

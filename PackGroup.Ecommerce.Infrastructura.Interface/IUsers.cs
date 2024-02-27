@@ -2,7 +2,7 @@
 
 namespace PackGroup.Ecommerce.Infrastructura.Interface
 {
-    public interface IUsers
+    public interface IUsers : IGenericRepository<Users>
     {
         Users Authenticate(string userName, string password);
     }

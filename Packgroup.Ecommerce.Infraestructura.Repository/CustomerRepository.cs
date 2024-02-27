@@ -1,6 +1,6 @@
 ﻿using Dapper;
 using Packgroup.Ecommerce.Domain.Entity;
-using Packgroup.Ecommerce.Transversal.Common;
+using Packgroup.Ecommerce.Infraestructura.Data;
 using PackGroup.Ecommerce.Infrastructura.Interface;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -9,18 +9,18 @@ namespace Packgroup.Ecommerce.Infraestructura.Repository
 {
     public class CustomerRepository : ICustomerRepository
     {
-        private readonly IConectionFactory _conectionFactory;
+        private readonly DapperContext _context;
 
-        public CustomerRepository(IConectionFactory conectionFactory)
+        public CustomerRepository(DapperContext context)
         {
-            _conectionFactory = conectionFactory;
+            _context = context;
         }
 
         #region Metodos Sincronicos
 
         public bool Insert(Customers customers)
         {
-            using (var conection = _conectionFactory.GetConnection)
+            using (var conection = _context.CreateConnection())
             {
 
                 var query = "CustomersInsert";
@@ -45,7 +45,7 @@ namespace Packgroup.Ecommerce.Infraestructura.Repository
 
         public bool Update(Customers customers)
         {
-            using (var conection = _conectionFactory.GetConnection)
+            using (var conection = _context.CreateConnection())
             {
 
                 var query = "CustomersUpdate";
@@ -70,7 +70,7 @@ namespace Packgroup.Ecommerce.Infraestructura.Repository
 
         public bool Delete(string customersId)
         {
-            using (var conection = _conectionFactory.GetConnection)
+            using (var conection = _context.CreateConnection())
             {
 
                 var query = "CustomersDelete";
@@ -85,7 +85,7 @@ namespace Packgroup.Ecommerce.Infraestructura.Repository
 
         public Customers Get(string customersId)
         {
-            using (var conection = _conectionFactory.GetConnection)
+            using (var conection = _context.CreateConnection())
             {
 
                 var query = "CustomersGetById";
@@ -100,7 +100,7 @@ namespace Packgroup.Ecommerce.Infraestructura.Repository
 
         public IEnumerable<Customers> GetAll()
         {
-            using (var conection = _conectionFactory.GetConnection)
+            using (var conection = _context.CreateConnection())
             {
 
                 var query = "CustomersList";
@@ -117,7 +117,7 @@ namespace Packgroup.Ecommerce.Infraestructura.Repository
 
         public async Task<bool> InsertAsync(Customers customers)
         {
-            using (var conection = _conectionFactory.GetConnection)
+            using (var conection = _context.CreateConnection())
             {
 
                 var query = "CustomersInsert";
@@ -142,7 +142,7 @@ namespace Packgroup.Ecommerce.Infraestructura.Repository
 
         public async Task<bool> UpdateAsync(Customers customers)
         {
-            using (var conection = _conectionFactory.GetConnection)
+            using (var conection = _context.CreateConnection())
             {
 
                 var query = "CustomersUpdate";
@@ -167,7 +167,7 @@ namespace Packgroup.Ecommerce.Infraestructura.Repository
 
         public async Task<bool> DeleteAsync(string customersId)
         {
-            using (var conection = _conectionFactory.GetConnection)
+            using (var conection = _context.CreateConnection())
             {
 
                 var query = "CustomersDelete";
@@ -182,7 +182,7 @@ namespace Packgroup.Ecommerce.Infraestructura.Repository
 
         public async Task<Customers> GetAsync(string customersId)
         {
-            using (var conection = _conectionFactory.GetConnection)
+            using (var conection = _context.CreateConnection())
             {
 
                 var query = "CustomersGetById";
@@ -197,7 +197,7 @@ namespace Packgroup.Ecommerce.Infraestructura.Repository
 
         public async Task<IEnumerable<Customers>> GetAllAsync()
         {
-            using (var conection = _conectionFactory.GetConnection)
+            using (var conection = _context.CreateConnection())
             {
 
                 var query = "CustomersList";

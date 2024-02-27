@@ -14,7 +14,7 @@ namespace Packgroup.Ecommerce.Services.WebApi.Modules.Injection
     {
         public static IServiceCollection AddInjection(this IServiceCollection services)
         {
-            services.AddSingleton<IConectionFactory, ConectionFactory>();
+            services.AddSingleton<DapperContext>();
             services.AddScoped<ICustomerApplication, CustomerApplication>();
             services.AddScoped<ICustomerDomain, CustomerDomain>();
             services.AddScoped<ICustomerRepository, CustomerRepository>();
@@ -22,6 +22,7 @@ namespace Packgroup.Ecommerce.Services.WebApi.Modules.Injection
             services.AddScoped<IUsersDomain, UserDomain>();
             services.AddScoped<IUsersApplication, UserApplication>();
             services.AddScoped(typeof(IAppLogger<>), typeof(LoggerAdapter<>));
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             return services;
         }
