@@ -3,11 +3,12 @@ using Microsoft.AspNetCore.Mvc;
 using Packgroup.Ecommerce.Aplication.DTO;
 using Packgroup.Ecommerce.Aplication.Interface;
 
-namespace Packgroup.Ecommerce.Services.WebApi.Controllers
+namespace Packgroup.Ecommerce.Services.WebApi.Controllers.v2
 {
     [Route("api/[controller]")]
     [ApiController]
     [Authorize]
+    [ApiVersion("2.0")]
     public class CustomerController : ControllerBase
     {
         private readonly ICustomerApplication _customerApplication;
@@ -31,9 +32,12 @@ namespace Packgroup.Ecommerce.Services.WebApi.Controllers
             return Ok(response);
         }
 
-        [HttpPut("update")]
-        public IActionResult Update([FromBody] CustomersDTO customerDTO)
+        [HttpPut("update/{customerId}")]
+        public IActionResult Update([FromRoute] string customerId, [FromBody] CustomersDTO customerDTO)
         {
+            var customer = _customerApplication.Get(customerId);
+            if (customer.Data == null) return NotFound(customer.Message);
+
             if (customerDTO == null) return BadRequest();
 
             var response = _customerApplication.Update(customerDTO);
