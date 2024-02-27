@@ -6,6 +6,9 @@ using Packgroup.Ecommerce.Services.WebApi.Modules.Injection;
 using Packgroup.Ecommerce.Services.WebApi.Modules.Validator;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Packgroup.Ecommerce.Services.WebApi.Modules.Versioning;
+using HealthChecks.UI.Client;
+using Packgroup.Ecommerce.Services.WebApi.Modules.HealthCheck;
+using System.Runtime.CompilerServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,6 +31,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddValidator();
+builder.Services.AddHealthCheck(builder.Configuration);
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -51,5 +56,11 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+app.MapHealthChecks("/health", new Microsoft.AspNetCore.Diagnostics.HealthChecks.HealthCheckOptions
+{
+    Predicate = _ => true,
+    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+});
+app.MapHealthChecksUI();
 
 app.Run();
