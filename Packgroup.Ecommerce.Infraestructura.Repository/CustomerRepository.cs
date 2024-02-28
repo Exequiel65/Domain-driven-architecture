@@ -111,6 +111,26 @@ namespace Packgroup.Ecommerce.Infraestructura.Repository
             };
         }
 
+        public IEnumerable<Customers> GetAllWithPagination(int pageNumber, int pageSize)
+        {
+            using var conection = _context.CreateConnection();
+            var query = "CustomersListWithPagination";
+            var parameters = new DynamicParameters();
+            parameters.Add("PageNumber", pageNumber);
+            parameters.Add("PageSize", pageSize);
+
+            var customers = conection.Query<Customers>(query, parameters, commandType: System.Data.CommandType.StoredProcedure);
+            return customers;
+
+
+        }
+        public int Count()
+        {
+            using var connection = _context.CreateConnection();
+            var query = "Select Count(*) from Customers";
+            var count = connection.ExecuteScalar<int>(query, commandType: System.Data.CommandType.Text);
+            return count;
+        }
         #endregion
 
         #region Metodos Asincronicos
@@ -206,6 +226,27 @@ namespace Packgroup.Ecommerce.Infraestructura.Repository
                 var customers = await conection.QueryAsync<Customers>(query, commandType: System.Data.CommandType.StoredProcedure);
                 return customers;
             };
+        }
+
+        public async Task<IEnumerable<Customers>> GetAllWithPaginationAsync(int pageNumber, int pageSize)
+        {
+            using var conection = _context.CreateConnection();
+            var query = "CustomersListWithPagination";
+            var parameters = new DynamicParameters();
+            parameters.Add("PageNumber", pageNumber);
+            parameters.Add("PageSize", pageSize);
+
+            var customers = await conection.QueryAsync<Customers>(query, parameters, commandType: System.Data.CommandType.StoredProcedure);
+            return customers;
+
+        }
+
+        public Task<int> CountAsync()
+        {
+            using var connection = _context.CreateConnection();
+            var query = "Select Count(*) from Customers";
+            var count = connection.ExecuteScalarAsync<int>(query, commandType: System.Data.CommandType.Text);
+            return count;
         }
 
         #endregion

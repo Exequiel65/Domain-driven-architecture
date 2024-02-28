@@ -14,6 +14,7 @@ namespace Packgroup.Ecommerce.Aplication.Interface
         Response<bool> Delete(string customerId);
         Response<CustomersDTO> Get(string customerId);
         Response<IEnumerable<CustomersDTO>> GetAll();
+        ResponsePagination<IEnumerable<CustomersDTO>> GetAllWithPagination(int pageNumber, int pageSize);
 
         #endregion
 
@@ -24,6 +25,7 @@ namespace Packgroup.Ecommerce.Aplication.Interface
         Task<Response<bool>> DeleteAsync(string customerId);
         Task<Response<CustomersDTO>> GetAsync(string customerId);
         Task<Response<IEnumerable<CustomersDTO>>> GetAllAsync();
+        Task<ResponsePagination<IEnumerable<CustomersDTO>>> GetAllWithPaginationAsync(int pageNumber, int pageSize);
 
         #endregion
 

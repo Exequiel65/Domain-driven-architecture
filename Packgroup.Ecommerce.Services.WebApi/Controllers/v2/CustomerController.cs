@@ -81,6 +81,16 @@ namespace Packgroup.Ecommerce.Services.WebApi.Controllers.v2
             return Ok(response);
         }
 
+        [HttpGet("GetAllPagination")]
+        public IActionResult GetAllPagination([FromQuery] int pageNumber, [FromQuery] int pageSize) 
+        {
+            var response = _customerApplication.GetAllWithPagination(pageNumber, pageSize);
+
+            if (!response.IsSuccess) return BadRequest(response);
+
+            return Ok(response);
+        }
+
         #endregion
 
         #region Metodos Asíncronos
@@ -136,6 +146,16 @@ namespace Packgroup.Ecommerce.Services.WebApi.Controllers.v2
         public async Task<IActionResult> GetAllAsync([FromRoute] string customerId)
         {
             var response = await _customerApplication.GetAllAsync();
+
+            if (!response.IsSuccess) return BadRequest(response);
+
+            return Ok(response);
+        }
+
+        [HttpGet("GetAllPagination-a")]
+        public async Task<IActionResult> GetAllPaginationAsync([FromQuery] int pageNumber, [FromQuery] int pageSize)
+        {
+            var response = await _customerApplication.GetAllWithPaginationAsync(pageNumber, pageSize);
 
             if (!response.IsSuccess) return BadRequest(response);
 

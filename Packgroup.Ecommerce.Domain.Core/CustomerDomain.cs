@@ -39,6 +39,15 @@ namespace Packgroup.Ecommerce.Domain.Core
         {
             return _unitOfWork.CustomerRepository.GetAll();
         }
+        public IEnumerable<Customers> GetAllWithPagination(int pageNumber, int pageSize)
+        {
+            return _unitOfWork.CustomerRepository.GetAllWithPagination(pageNumber, pageSize);
+        }
+
+        public int Count()
+        {
+            return _unitOfWork.CustomerRepository.Count();
+        }
         #endregion
 
         #region Métodos Asíncronos
@@ -65,6 +74,16 @@ namespace Packgroup.Ecommerce.Domain.Core
         public async Task<IEnumerable<Customers>> GetAllAsync()
         {
             return await _unitOfWork.CustomerRepository.GetAllAsync();
+        }
+
+        public async Task<IEnumerable<Customers>> GetAllWithPaginationAsync(int pageNumber, int pageSize)
+        {
+            return await _unitOfWork.CustomerRepository.GetAllWithPaginationAsync(pageNumber, pageSize);
+        }
+
+        public async Task<int> CountAsync()
+        {
+            return await _unitOfWork.CustomerRepository.CountAsync();
         }
         #endregion
     }
