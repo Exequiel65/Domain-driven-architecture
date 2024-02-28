@@ -9,6 +9,16 @@
     }
   },
   "profiles": {
+    "Release": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "applicationUrl": "http://localhost:5055",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Release"
+      }
+    },
     "http": {
       "commandName": "Project",
       "dotnetRunMessages": true,
