@@ -362,3 +362,4 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 /Packgroup.Ecommerce.Services.WebApi/appsettings.Development.json
+/Packgroup.Ecommerce.Services.WebApi/appsettings.Release.json
