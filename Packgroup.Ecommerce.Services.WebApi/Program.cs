@@ -10,18 +10,18 @@ using Packgroup.Ecommerce.Services.WebApi.Modules.Validator;
 using Packgroup.Ecommerce.Services.WebApi.Modules.Versioning;
 
 var builder = WebApplication.CreateBuilder(args);
-
 //AutoMapper
 builder.Services.AddMapper();
-builder.Services.AddSwagger();
 //cors
 builder.Services.AddFeature(builder.Configuration);
-
 //Injection
 builder.Services.AddInjection();
-
 // configure jwt
 builder.Services.AddAuthentication(builder.Configuration);
+
+builder.Services.AddSwagger();
+
+
 
 builder.Services.AddVersioning();
 
