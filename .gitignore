@@ -363,3 +363,4 @@ MigrationBackup/
 FodyWeavers.xsd
 /Packgroup.Ecommerce.Services.WebApi/appsettings.Development.json
 /Packgroup.Ecommerce.Services.WebApi/appsettings.Release.json
+/Packgroup.Ecommerce.Application.Test/appsettings.development.json
