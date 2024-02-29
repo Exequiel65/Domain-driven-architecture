@@ -21,6 +21,9 @@ namespace Packgroup.Ecommerce.Services.WebApi.Modules.Injection
             services.AddScoped<IUsers, UserRepository>();
             services.AddScoped<IUsersDomain, UserDomain>();
             services.AddScoped<IUsersApplication, UserApplication>();
+            services.AddScoped<ICategoriesApplication, CategoriesApplication>();
+            services.AddScoped<ICategoriesDomain, CategoriesDomain>();
+            services.AddScoped<ICategoriesRepository, CategoriesRepository>();
             services.AddScoped(typeof(IAppLogger<>), typeof(LoggerAdapter<>));
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 

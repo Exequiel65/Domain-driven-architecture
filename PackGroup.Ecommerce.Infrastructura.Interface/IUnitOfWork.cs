@@ -6,5 +6,7 @@ namespace PackGroup.Ecommerce.Infrastructura.Interface
     {
         ICustomerRepository CustomerRepository { get; }
         IUsers Users { get; }
+
+        ICategoriesRepository Categories { get; }
     }
 }
