@@ -62,3 +62,6 @@ app.MapHealthChecks("/health", new Microsoft.AspNetCore.Diagnostics.HealthChecks
 app.MapHealthChecksUI();
 
 app.Run();
+
+
+public partial class Program { };
