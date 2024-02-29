@@ -9,6 +9,7 @@ using Packgroup.Ecommerce.Services.WebApi.Modules.Swagger;
 using Packgroup.Ecommerce.Services.WebApi.Modules.Validator;
 using Packgroup.Ecommerce.Services.WebApi.Modules.Versioning;
 using Packgroup.Ecommerce.Services.WebApi.Modules.Watch;
+using Packgroup.Ecommerce.Services.WebApi.Modules.Redis;
 using WatchDog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -33,6 +34,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddValidator();
 builder.Services.AddHealthCheck(builder.Configuration);
 builder.Services.AddWatchDog(builder.Configuration);
+builder.Services.AddRedisCache(builder.Configuration);
 
 var app = builder.Build();
 
@@ -53,10 +55,10 @@ var app = builder.Build();
 app.UseHttpsRedirection();
 app.UseWatchDogExceptionLogger();
 app.UseCors(FeatureExtensions.myPolicy);
-
+app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
-
+app.UseEndpoints(_ => { });
 app.MapControllers();
 app.MapHealthChecks("/health", new Microsoft.AspNetCore.Diagnostics.HealthChecks.HealthCheckOptions
 {
