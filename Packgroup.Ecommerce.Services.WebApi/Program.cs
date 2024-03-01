@@ -10,6 +10,7 @@ using Packgroup.Ecommerce.Services.WebApi.Modules.Validator;
 using Packgroup.Ecommerce.Services.WebApi.Modules.Versioning;
 using Packgroup.Ecommerce.Services.WebApi.Modules.Watch;
 using Packgroup.Ecommerce.Services.WebApi.Modules.Redis;
+using Packgroup.Ecommerce.Services.WebApi.Modules.RateLimiter;
 using WatchDog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -35,6 +36,7 @@ builder.Services.AddValidator();
 builder.Services.AddHealthCheck(builder.Configuration);
 builder.Services.AddWatchDog(builder.Configuration);
 builder.Services.AddRedisCache(builder.Configuration);
+builder.Services.AddRateLimiting(builder.Configuration);
 
 var app = builder.Build();
 
@@ -58,6 +60,7 @@ app.UseCors(FeatureExtensions.myPolicy);
 app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
+app.UseRateLimiter();
 app.UseEndpoints(_ => { });
 app.MapControllers();
 app.MapHealthChecks("/health", new Microsoft.AspNetCore.Diagnostics.HealthChecks.HealthCheckOptions
