@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Packgroup.Ecommerce.Aplication.DTO;
-using Packgroup.Ecommerce.Aplication.Interface;
+using Packgroup.Ecommerce.Aplication.Interface.UserCases;
 
 namespace Packgroup.Ecommerce.Services.WebApi.Controllers.v1
 {
@@ -21,7 +21,7 @@ namespace Packgroup.Ecommerce.Services.WebApi.Controllers.v1
         #region Metodos Sincronos
 
         [HttpPost("create")]
-        public IActionResult Insert([FromBody] CustomersDTO customerDTO)
+        public IActionResult Insert([FromBody] CustomerDTO customerDTO)
         {
             if (customerDTO == null) return BadRequest();
 
@@ -33,7 +33,7 @@ namespace Packgroup.Ecommerce.Services.WebApi.Controllers.v1
         }
 
         [HttpPut("update")]
-        public IActionResult Update([FromBody] CustomersDTO customerDTO)
+        public IActionResult Update([FromBody] CustomerDTO customerDTO)
         {
             if (customerDTO == null) return BadRequest();
 
@@ -83,7 +83,7 @@ namespace Packgroup.Ecommerce.Services.WebApi.Controllers.v1
         #region Metodos Asíncronos
 
         [HttpPost("insert-a")]
-        public async Task<IActionResult> InsertAsync([FromBody] CustomersDTO customerDTO)
+        public async Task<IActionResult> InsertAsync([FromBody] CustomerDTO customerDTO)
         {
             if (customerDTO == null) return BadRequest();
 
@@ -95,7 +95,7 @@ namespace Packgroup.Ecommerce.Services.WebApi.Controllers.v1
         }
 
         [HttpPut("update-a")]
-        public async Task<IActionResult> UpdateAsync([FromBody] CustomersDTO customerDTO)
+        public async Task<IActionResult> UpdateAsync([FromBody] CustomerDTO customerDTO)
         {
             if (customerDTO == null) return BadRequest();
 

@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Packgroup.Ecommerce.Aplication.Interface;
-using Packgroup.Ecommerce.Aplication.Main;
+using Packgroup.Ecommerce.Aplication.Interface.UserCases;
+using Packgroup.Ecommerce.Aplication.UseCases.Users;
 
 namespace Packgroup.Ecommerce.Application.Test
 {

@@ -7,6 +7,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Packgroup.Ecommerce.Aplication.DTO\Packgroup.Ecommerce.Aplication.DTO.csproj" />
+    <ProjectReference Include="..\Packgroup.Ecommerce.Domain.Entity\Packgroup.Ecommerce.Domain.Entity.csproj" />
     <ProjectReference Include="..\Packgroup.Ecommerce.Transversal.Commin\Packgroup.Ecommerce.Transversal.Common.csproj" />
   </ItemGroup>
 

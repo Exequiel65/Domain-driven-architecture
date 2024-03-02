@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Packgroup.Ecommerce.Aplication.DTO;
-using Packgroup.Ecommerce.Aplication.Interface;
+using Packgroup.Ecommerce.Aplication.Interface.UserCases;
 using Packgroup.Ecommerce.Services.WebApi.Helpers;
 using Packgroup.Ecommerce.Transversal.Common;
 using System.IdentityModel.Tokens.Jwt;
@@ -29,7 +29,7 @@ namespace Packgroup.Ecommerce.Services.WebApi.Controllers.v2
 
         [HttpPost("auth")]
         [AllowAnonymous]
-        public IActionResult Authenticate([FromBody] UsersDTO usersDTO)
+        public IActionResult Authenticate([FromBody] UserDTO usersDTO)
         {
             var response = _usersApplication.Authenticate(usersDTO.UserName, usersDTO.Password);
             if (response.IsSuccess)
@@ -47,7 +47,7 @@ namespace Packgroup.Ecommerce.Services.WebApi.Controllers.v2
             return BadRequest(response);
         }
 
-        private string BuilderToken(Response<UsersDTO> usersDto)
+        private string BuilderToken(Response<UserDTO> usersDto)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_appSettings.Secret);

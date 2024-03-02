@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Packgroup.Ecommerce.Aplication.DTO;
-using Packgroup.Ecommerce.Aplication.Interface;
+using Packgroup.Ecommerce.Aplication.Interface.UserCases;
 
 namespace Packgroup.Ecommerce.Services.WebApi.Controllers.v2
 {
@@ -21,7 +21,7 @@ namespace Packgroup.Ecommerce.Services.WebApi.Controllers.v2
         #region Metodos Sincronos
 
         [HttpPost("create")]
-        public IActionResult Insert([FromBody] CustomersDTO customerDTO)
+        public IActionResult Insert([FromBody] CustomerDTO customerDTO)
         {
             if (customerDTO == null) return BadRequest();
 
@@ -33,7 +33,7 @@ namespace Packgroup.Ecommerce.Services.WebApi.Controllers.v2
         }
 
         [HttpPut("update/{customerId}")]
-        public IActionResult Update([FromRoute] string customerId, [FromBody] CustomersDTO customerDTO)
+        public IActionResult Update([FromRoute] string customerId, [FromBody] CustomerDTO customerDTO)
         {
             var customer = _customerApplication.Get(customerId);
             if (customer.Data == null) return NotFound(customer.Message);
@@ -96,7 +96,7 @@ namespace Packgroup.Ecommerce.Services.WebApi.Controllers.v2
         #region Metodos Asíncronos
 
         [HttpPost("insert-a")]
-        public async Task<IActionResult> InsertAsync([FromBody] CustomersDTO customerDTO)
+        public async Task<IActionResult> InsertAsync([FromBody] CustomerDTO customerDTO)
         {
             if (customerDTO == null) return BadRequest();
 
@@ -108,7 +108,7 @@ namespace Packgroup.Ecommerce.Services.WebApi.Controllers.v2
         }
 
         [HttpPut("update-a")]
-        public async Task<IActionResult> UpdateAsync([FromBody] CustomersDTO customerDTO)
+        public async Task<IActionResult> UpdateAsync([FromBody] CustomerDTO customerDTO)
         {
             if (customerDTO == null) return BadRequest();
 

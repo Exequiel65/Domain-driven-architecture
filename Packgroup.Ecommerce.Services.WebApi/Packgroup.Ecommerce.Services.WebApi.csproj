@@ -28,13 +28,9 @@
   <ItemGroup>
     <ProjectReference Include="..\Packgroup.Ecommerce.Aplication.DTO\Packgroup.Ecommerce.Aplication.DTO.csproj" />
     <ProjectReference Include="..\Packgroup.Ecommerce.Aplication.Interface\Packgroup.Ecommerce.Aplication.Interface.csproj" />
-    <ProjectReference Include="..\Packgroup.Ecommerce.Aplication.Main\Packgroup.Ecommerce.Aplication.Main.csproj" />
-    <ProjectReference Include="..\Packgroup.Ecommerce.Domain.Core\Packgroup.Ecommerce.Domain.Core.csproj" />
+    <ProjectReference Include="..\Packgroup.Ecommerce.Aplication.Main\Packgroup.Ecommerce.Aplication.UseCases.csproj" />
     <ProjectReference Include="..\Packgroup.Ecommerce.Domain.Entity\Packgroup.Ecommerce.Domain.Entity.csproj" />
-    <ProjectReference Include="..\Packgroup.Ecommerce.Domain.Interface\Packgroup.Ecommerce.Domain.Interface.csproj" />
-    <ProjectReference Include="..\Packgroup.Ecommerce.Infraestructura.Data\Packgroup.Ecommerce.Infraestructura.Data.csproj" />
-    <ProjectReference Include="..\Packgroup.Ecommerce.Infraestructura.Repository\Packgroup.Ecommerce.Infraestructura.Repository.csproj" />
-    <ProjectReference Include="..\PackGroup.Ecommerce.Infrastructura.Interface\PackGroup.Ecommerce.Infrastructura.Interface.csproj" />
+    <ProjectReference Include="..\Packgroup.Ecommerce.Persistence.Repository\Packgroup.Ecommerce.Persistence.csproj" />
     <ProjectReference Include="..\Packgroup.Ecommerce.Transversal.Commin\Packgroup.Ecommerce.Transversal.Common.csproj" />
     <ProjectReference Include="..\Packgroup.Ecommerce.Transversal.Logging\Packgroup.Ecommerce.Transversal.Logging.csproj" />
     <ProjectReference Include="..\Packgroup.Ecommerce.Transversal.Mapper\Packgroup.Ecommerce.Transversal.Mapper.csproj" />

@@ -1,5 +1,7 @@
 using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
+using Packgroup.Ecommerce.Persistence;
+using Packgroup.Ecommerce.Aplication.UseCases;
 using Packgroup.Ecommerce.Services.WebApi.Modules.Authentication;
 using Packgroup.Ecommerce.Services.WebApi.Modules.Feature;
 using Packgroup.Ecommerce.Services.WebApi.Modules.HealthCheck;
@@ -19,6 +21,8 @@ builder.Services.AddMapper();
 //cors
 builder.Services.AddFeature(builder.Configuration);
 //Injection
+builder.Services.AddPersistenceServices();
+builder.Services.AddApplicationServices();
 builder.Services.AddInjection();
 // configure jwt
 builder.Services.AddAuthentication(builder.Configuration);

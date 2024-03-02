@@ -4,7 +4,7 @@ using Packgroup.Ecommerce.Aplication.DTO;
 
 namespace Packgroup.Ecommerce.Application.Validator
 {
-    public class UserDTOValidator : AbstractValidator<UsersDTO>
+    public class UserDTOValidator : AbstractValidator<UserDTO>
     {
         public UserDTOValidator() 
         {

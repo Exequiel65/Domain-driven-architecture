@@ -7,9 +7,9 @@ namespace Packgroup.Ecommerce.Transversal.Mapper
     {
         public MappingsProfile()
         {
-            CreateMap<Customers, CustomersDTO>().ReverseMap();
-            CreateMap<Users, UsersDTO>().ReverseMap();
-            CreateMap<Categories, CategoriesDto>().ReverseMap();
+            CreateMap<Customer, CustomerDTO>().ReverseMap();
+            CreateMap<User, UserDTO>().ReverseMap();
+            CreateMap<Categorie, CategorieDto>().ReverseMap();
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
-using Packgroup.Ecommerce.Aplication.Interface;
+using Packgroup.Ecommerce.Aplication.Interface.UserCases;
 
 namespace Packgroup.Ecommerce.Services.WebApi.Controllers.v2
 {
