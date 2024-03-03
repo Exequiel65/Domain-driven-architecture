@@ -1,6 +1,6 @@
 ﻿using Dapper;
 using Packgroup.Ecommerce.Aplication.Interface.Persistence;
-using Packgroup.Ecommerce.Domain.Entity;
+using Packgroup.Ecommerce.Domain.Entities;
 using Packgroup.Ecommerce.Persistence.Contexts;
 using System.Collections.Generic;
 using System.Data;

@@ -1,4 +1,4 @@
-﻿namespace Packgroup.Ecommerce.Domain.Entity
+﻿namespace Packgroup.Ecommerce.Domain.Entities
 {
     public class Customer
     {

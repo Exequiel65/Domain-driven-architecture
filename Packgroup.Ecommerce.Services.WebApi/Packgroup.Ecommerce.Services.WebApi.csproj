@@ -21,6 +21,10 @@
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="5.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.16">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.18.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
@@ -29,8 +33,8 @@
     <ProjectReference Include="..\Packgroup.Ecommerce.Aplication.DTO\Packgroup.Ecommerce.Aplication.DTO.csproj" />
     <ProjectReference Include="..\Packgroup.Ecommerce.Aplication.Interface\Packgroup.Ecommerce.Aplication.Interface.csproj" />
     <ProjectReference Include="..\Packgroup.Ecommerce.Aplication.Main\Packgroup.Ecommerce.Aplication.UseCases.csproj" />
-    <ProjectReference Include="..\Packgroup.Ecommerce.Domain.Entity\Packgroup.Ecommerce.Domain.Entity.csproj" />
-    <ProjectReference Include="..\Packgroup.Ecommerce.Persistence.Repository\Packgroup.Ecommerce.Persistence.csproj" />
+    <ProjectReference Include="..\Packgroup.Ecommerce.Domain.Entity\Packgroup.Ecommerce.Domain.csproj" />
+    <ProjectReference Include="..\Packgroup.Ecommerce.Persistence\Packgroup.Ecommerce.Persistence.csproj" />
     <ProjectReference Include="..\Packgroup.Ecommerce.Transversal.Commin\Packgroup.Ecommerce.Transversal.Common.csproj" />
     <ProjectReference Include="..\Packgroup.Ecommerce.Transversal.Logging\Packgroup.Ecommerce.Transversal.Logging.csproj" />
     <ProjectReference Include="..\Packgroup.Ecommerce.Transversal.Mapper\Packgroup.Ecommerce.Transversal.Mapper.csproj" />

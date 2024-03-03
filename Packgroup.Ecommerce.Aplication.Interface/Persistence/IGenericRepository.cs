@@ -1,10 +1,4 @@
-﻿using Packgroup.Ecommerce.Domain.Entity;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Packgroup.Ecommerce.Aplication.Interface.Persistence
+﻿namespace Packgroup.Ecommerce.Aplication.Interface.Persistence
 {
     public interface IGenericRepository<T> where T : class
     {

@@ -21,7 +21,7 @@ builder.Services.AddMapper();
 //cors
 builder.Services.AddFeature(builder.Configuration);
 //Injection
-builder.Services.AddPersistenceServices();
+builder.Services.AddPersistenceServices(builder.Configuration);
 builder.Services.AddApplicationServices();
 builder.Services.AddInjection();
 // configure jwt
@@ -84,3 +84,11 @@ app.Run();
 
 
 public partial class Program { };
+
+
+// dotnet tool install -g upgrade-assistant //actualizar proyectos
+// tools necesaria herramientas
+//dotnet tool install --global dotnet-ef
+//  dotnet tool update --global dotnet-ef --version 7.0.4
+// Crear Migracion
+// dotnet ef migrations add CreateInitialScheme --project Packgroup.Ecommerce.Persistence --startup-project Packgroup.Ecommerce.Services.WebApi --output-dir Migrations --context ApplicationDbContext

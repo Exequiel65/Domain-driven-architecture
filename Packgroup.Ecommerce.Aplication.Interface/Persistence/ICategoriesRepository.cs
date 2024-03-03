@@ -1,4 +1,4 @@
-﻿using Packgroup.Ecommerce.Domain.Entity;
+﻿using Packgroup.Ecommerce.Domain.Entities;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

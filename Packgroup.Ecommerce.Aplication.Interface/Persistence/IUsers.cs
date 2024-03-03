@@ -1,4 +1,4 @@
-﻿using Packgroup.Ecommerce.Domain.Entity;
+﻿using Packgroup.Ecommerce.Domain.Entities;
 
 namespace Packgroup.Ecommerce.Aplication.Interface.Persistence
 {

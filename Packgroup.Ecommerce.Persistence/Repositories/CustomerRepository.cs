@@ -1,9 +1,9 @@
 ﻿using Dapper;
-using Packgroup.Ecommerce.Domain.Entity;
 using Packgroup.Ecommerce.Persistence.Contexts;
 using Packgroup.Ecommerce.Aplication.Interface.Persistence;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Packgroup.Ecommerce.Domain.Entities;
 
 namespace Packgroup.Ecommerce.Persistence.Repositories
 {

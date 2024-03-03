@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Packgroup.Ecommerce.Aplication.DTO;
-using Packgroup.Ecommerce.Domain.Entity;
+using Packgroup.Ecommerce.Domain.Entities;
 namespace Packgroup.Ecommerce.Transversal.Mapper
 {
     public class MappingsProfile : Profile
