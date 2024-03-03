@@ -8,5 +8,9 @@ namespace Packgroup.Ecommerce.Aplication.Interface.Persistence
         IUsers Users { get; }
 
         ICategoriesRepository Categories { get; }
+
+        IDiscountRepository Discounts { get; }
+
+        Task<int> Save(CancellationToken cancellationToken);
     }
 }

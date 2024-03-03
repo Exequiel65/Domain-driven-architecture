@@ -6,9 +6,7 @@ using Packgroup.Ecommerce.Services.WebApi.Modules.Authentication;
 using Packgroup.Ecommerce.Services.WebApi.Modules.Feature;
 using Packgroup.Ecommerce.Services.WebApi.Modules.HealthCheck;
 using Packgroup.Ecommerce.Services.WebApi.Modules.Injection;
-using Packgroup.Ecommerce.Services.WebApi.Modules.Mapper;
 using Packgroup.Ecommerce.Services.WebApi.Modules.Swagger;
-using Packgroup.Ecommerce.Services.WebApi.Modules.Validator;
 using Packgroup.Ecommerce.Services.WebApi.Modules.Versioning;
 using Packgroup.Ecommerce.Services.WebApi.Modules.Watch;
 using Packgroup.Ecommerce.Services.WebApi.Modules.Redis;
@@ -16,8 +14,7 @@ using Packgroup.Ecommerce.Services.WebApi.Modules.RateLimiter;
 using WatchDog;
 
 var builder = WebApplication.CreateBuilder(args);
-//AutoMapper
-builder.Services.AddMapper();
+
 //cors
 builder.Services.AddFeature(builder.Configuration);
 //Injection
@@ -33,10 +30,8 @@ builder.Services.AddSwagger();
 
 builder.Services.AddVersioning();
 
-builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddValidator();
 builder.Services.AddHealthCheck(builder.Configuration);
 builder.Services.AddWatchDog(builder.Configuration);
 builder.Services.AddRedisCache(builder.Configuration);

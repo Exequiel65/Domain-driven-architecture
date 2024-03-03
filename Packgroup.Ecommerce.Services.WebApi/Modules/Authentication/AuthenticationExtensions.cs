@@ -38,7 +38,6 @@ namespace Packgroup.Ecommerce.Services.WebApi.Modules.Authentication
                                 context.Response.Headers.Add("Token-Expired", "true");
                             }
                             throw new Exception(context.Exception.Message);
-                            return Task.CompletedTask;
                         }
                     };
                     x.RequireHttpsMetadata = false;
@@ -52,7 +51,7 @@ namespace Packgroup.Ecommerce.Services.WebApi.Modules.Authentication
                         ValidateAudience = true,
                         ValidAudience = Audience,
                         ValidateLifetime = true,
-                        ClockSkew = TimeSpan.Zero,
+                        ClockSkew = new TimeSpan(0,10,0),
                     };
                 });
             return services;

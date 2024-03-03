@@ -20,6 +20,7 @@ namespace Packgroup.Ecommerce.Persistence
             services.AddScoped<ICustomerRepository, CustomerRepository>();
             services.AddScoped<IUsers, UserRepository>();
             services.AddScoped<ICategoriesRepository, CategoriesRepository>();
+            services.AddScoped<IDiscountRepository, DiscountRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             return services;

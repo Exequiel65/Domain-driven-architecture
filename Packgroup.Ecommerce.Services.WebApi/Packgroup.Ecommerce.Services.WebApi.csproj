@@ -37,7 +37,6 @@
     <ProjectReference Include="..\Packgroup.Ecommerce.Persistence\Packgroup.Ecommerce.Persistence.csproj" />
     <ProjectReference Include="..\Packgroup.Ecommerce.Transversal.Commin\Packgroup.Ecommerce.Transversal.Common.csproj" />
     <ProjectReference Include="..\Packgroup.Ecommerce.Transversal.Logging\Packgroup.Ecommerce.Transversal.Logging.csproj" />
-    <ProjectReference Include="..\Packgroup.Ecommerce.Transversal.Mapper\Packgroup.Ecommerce.Transversal.Mapper.csproj" />
   </ItemGroup>
 
 </Project>
