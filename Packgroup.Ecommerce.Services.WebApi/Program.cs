@@ -11,6 +11,7 @@ using Packgroup.Ecommerce.Services.WebApi.Modules.Versioning;
 using Packgroup.Ecommerce.Services.WebApi.Modules.Watch;
 using Packgroup.Ecommerce.Services.WebApi.Modules.Redis;
 using Packgroup.Ecommerce.Services.WebApi.Modules.RateLimiter;
+using Packgroup.Ecommerce.Infraestuctura;
 using WatchDog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,6 +22,7 @@ builder.Services.AddFeature(builder.Configuration);
 builder.Services.AddPersistenceServices(builder.Configuration);
 builder.Services.AddApplicationServices();
 builder.Services.AddInjection();
+builder.Services.AddInfrastructureServices();
 // configure jwt
 builder.Services.AddAuthentication(builder.Configuration);
 

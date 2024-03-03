@@ -35,6 +35,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Packgroup.Ecommerce.Transve
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Packgroup.Ecommerce.Persistence", "Packgroup.Ecommerce.Persistence\Packgroup.Ecommerce.Persistence.csproj", "{A5CFDB8B-7211-4720-8F6E-7739960E8D8A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Packgroup.Ecommerce.Infraestuctura", "Packgroup.Ecommerce.Infraestuctura\Packgroup.Ecommerce.Infraestuctura.csproj", "{7926802B-E515-4990-BD93-ABF949D55F36}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,10 @@ Global
 		{A5CFDB8B-7211-4720-8F6E-7739960E8D8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A5CFDB8B-7211-4720-8F6E-7739960E8D8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A5CFDB8B-7211-4720-8F6E-7739960E8D8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7926802B-E515-4990-BD93-ABF949D55F36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7926802B-E515-4990-BD93-ABF949D55F36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7926802B-E515-4990-BD93-ABF949D55F36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7926802B-E515-4990-BD93-ABF949D55F36}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -96,6 +102,7 @@ Global
 		{053F8374-3B5F-454F-8D25-62DCEFC983A1} = {78BFA548-D481-4915-9C5A-C2084F2DF470}
 		{E3343FE8-2F6F-48B5-A5A6-D685A00C29E8} = {3C61936D-5AD6-4C90-84F9-7DCFC8449D6D}
 		{A5CFDB8B-7211-4720-8F6E-7739960E8D8A} = {810B8EFB-D4EB-4FB9-A9FD-732A3CC4D501}
+		{7926802B-E515-4990-BD93-ABF949D55F36} = {810B8EFB-D4EB-4FB9-A9FD-732A3CC4D501}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E103FDA1-4933-41D8-9FAA-511B835C1CD3}
