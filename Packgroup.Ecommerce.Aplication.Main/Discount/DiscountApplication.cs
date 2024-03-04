@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using Packgroup.Ecommerce.Aplication.DTO;
+using Packgroup.Ecommerce.Aplication.Interface.Infraestructure;
 using Packgroup.Ecommerce.Aplication.Interface.Persistence;
 using Packgroup.Ecommerce.Aplication.Interface.UserCases;
 using Packgroup.Ecommerce.Application.Validator;
+using Packgroup.Ecommerce.Domain.Events;
 using Packgroup.Ecommerce.Transversal.Common;
 
 namespace Packgroup.Ecommerce.Aplication.UseCases.Discount
@@ -12,12 +14,14 @@ namespace Packgroup.Ecommerce.Aplication.UseCases.Discount
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
         private readonly DiscountDTOValidator _discountDTOValidator;
+        private readonly IEventBus _eventBus;
 
-        public DiscountApplication(IUnitOfWork unitOfWork, IMapper mapper, DiscountDTOValidator discountDTOValidator)
+        public DiscountApplication(IUnitOfWork unitOfWork, IMapper mapper, DiscountDTOValidator discountDTOValidator, IEventBus eventBus)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
             _discountDTOValidator = discountDTOValidator;
+            _eventBus = eventBus;
         }
 
         public async Task<Response<bool>> Create(DiscountDto discountDto, CancellationToken cancellationToken = default)
@@ -33,7 +37,7 @@ namespace Packgroup.Ecommerce.Aplication.UseCases.Discount
                     return response;
                 }
 
-                var discount = _mapper.Map<Domain.Entities.Discount >(discountDto);
+                var discount = _mapper.Map<Domain.Entities.Discount>(discountDto);
                 await _unitOfWork.Discounts.InsertAsync(discount);
                 response.Data = await _unitOfWork.Save(cancellationToken) > 0;
 
@@ -41,6 +45,10 @@ namespace Packgroup.Ecommerce.Aplication.UseCases.Discount
                 {
                     response.IsSuccess = true;
                     response.Message = "Registro Exitoso!!";
+
+                    // Publicamos el evento
+                    var discountCreatedEvent = _mapper.Map<DiscountCreatedEvent>(discount);
+                    _eventBus.Publish(discountCreatedEvent);
                 }
 
             }

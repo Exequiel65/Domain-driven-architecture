@@ -19,10 +19,10 @@ var builder = WebApplication.CreateBuilder(args);
 //cors
 builder.Services.AddFeature(builder.Configuration);
 //Injection
+builder.Services.AddInfrastructureServices();
 builder.Services.AddPersistenceServices(builder.Configuration);
 builder.Services.AddApplicationServices();
 builder.Services.AddInjection();
-builder.Services.AddInfrastructureServices();
 // configure jwt
 builder.Services.AddAuthentication(builder.Configuration);
 

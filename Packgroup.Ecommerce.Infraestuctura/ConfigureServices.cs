@@ -1,9 +1,9 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using MassTransit;
-using Packgroup.Ecommerce.Infraestuctura.EventBus.Options;
+﻿using MassTransit;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using Packgroup.Ecommerce.Aplication.Interface.Infraestructure;
 using Packgroup.Ecommerce.Infraestuctura.EventBus;
-using Microsoft.Extensions.Options;
+using Packgroup.Ecommerce.Infraestuctura.EventBus.Options;
 
 namespace Packgroup.Ecommerce.Infraestuctura
 {
