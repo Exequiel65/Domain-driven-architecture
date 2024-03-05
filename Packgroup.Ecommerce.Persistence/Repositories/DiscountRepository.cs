@@ -2,7 +2,7 @@
 using Packgroup.Ecommerce.Aplication.Interface.Persistence;
 using Packgroup.Ecommerce.Domain.Entities;
 using Packgroup.Ecommerce.Persistence.Contexts;
-using static Dapper.SqlMapper;
+using Packgroup.Ecommerce.Persistence.Mocks;
 
 namespace Packgroup.Ecommerce.Persistence.Repositories
 {
@@ -82,9 +82,16 @@ namespace Packgroup.Ecommerce.Persistence.Repositories
             return await Task.FromResult(true);
         }
 
-        public Task<IEnumerable<Discount>> GetAllWithPaginationAsync(int pageNumber, int pageSize)
+        public async Task<IEnumerable<Discount>> GetAllWithPaginationAsync(int pageNumber, int pageSize)
         {
-            throw new NotImplementedException();
+            var faker = new DiscountGetAllWithPaginationAsyncBogusConfig();
+            var result = await Task.Run(() => faker.Generate(100));
+
+            return result.Skip((pageNumber - 1) * pageSize).Take(pageSize);
+        }
+        public async Task<int> CountAsync()
+        {
+            return await Task.Run(() => 1000);
         }
         public async Task<List<Discount>> GetAllAsync(CancellationToken cancellationToken)
         {
@@ -95,10 +102,6 @@ namespace Packgroup.Ecommerce.Persistence.Repositories
             return await _context.Set<Discount>().AsNoTracking().SingleOrDefaultAsync(x => x.Id.Equals(id), cancellationToken);
         }
 
-        public Task<int> CountAsync()
-        {
-            throw new NotImplementedException();
-        }
         public Task<IEnumerable<Discount>> GetAllAsync()
         {
             throw new NotImplementedException();

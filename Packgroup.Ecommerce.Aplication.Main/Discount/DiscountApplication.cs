@@ -15,13 +15,20 @@ namespace Packgroup.Ecommerce.Aplication.UseCases.Discount
         private readonly IMapper _mapper;
         private readonly DiscountDTOValidator _discountDTOValidator;
         private readonly IEventBus _eventBus;
+        private readonly IAppLogger<DiscountApplication> _logger;
 
-        public DiscountApplication(IUnitOfWork unitOfWork, IMapper mapper, DiscountDTOValidator discountDTOValidator, IEventBus eventBus)
+        public DiscountApplication(IUnitOfWork unitOfWork, IMapper mapper, DiscountDTOValidator discountDTOValidator, IEventBus eventBus, IAppLogger<DiscountApplication> logger)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
             _discountDTOValidator = discountDTOValidator;
             _eventBus = eventBus;
+            _logger = logger;
+        }
+
+        public Task<int> CountAsync()
+        {
+            throw new NotImplementedException();
         }
 
         public async Task<Response<bool>> Create(DiscountDto discountDto, CancellationToken cancellationToken = default)
@@ -121,6 +128,33 @@ namespace Packgroup.Ecommerce.Aplication.UseCases.Discount
             catch (Exception e)
             {
                 response.Message = e.Message;
+            }
+            return response;
+        }
+
+        public async Task<ResponsePagination<IEnumerable<DiscountDto>>> GetAllWithPaginationAsync(int pageNumber, int pageSize)
+        {
+            var response = new ResponsePagination<IEnumerable<DiscountDto>>();
+            try
+            {
+                var count = await _unitOfWork.Discounts.CountAsync();
+                var discounts = await _unitOfWork.Discounts.GetAllWithPaginationAsync(pageNumber, pageSize);
+                response.Data = _mapper.Map<IEnumerable<DiscountDto>>(discounts);
+
+                if (response.Data != null)
+                {
+                    response.PageNumber = pageNumber;
+                    response.TotalPage = (int)Math.Ceiling(count / (double)pageSize);
+                    response.TotalCount = count;
+                    response.IsSuccess = true;
+                    response.Message = "Consulta Paginada Exitosa!!";
+
+                }
+            }
+            catch (Exception e)
+            {
+                response.Message = e.Message;
+                _logger.LogInformation($"{e.Message}");
             }
             return response;
         }

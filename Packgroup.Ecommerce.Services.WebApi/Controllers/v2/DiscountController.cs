@@ -1,9 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Packgroup.Ecommerce.Aplication.DTO;
 using Packgroup.Ecommerce.Aplication.Interface.UserCases;
-using Packgroup.Ecommerce.Aplication.UseCases.Customers;
 
 namespace Packgroup.Ecommerce.Services.WebApi.Controllers.v2
 {
@@ -73,6 +71,16 @@ namespace Packgroup.Ecommerce.Services.WebApi.Controllers.v2
         public async Task<IActionResult> GetAll()
         {
             var response = await _discountApplication.GetAll();
+
+            if (!response.IsSuccess) return BadRequest(response);
+
+            return Ok(response);
+        }
+
+        [HttpGet("GetAllPagination")]
+        public async Task<IActionResult> GetAllPaginationAsync([FromQuery] int pageNumber, [FromQuery] int pageSize)
+        {
+            var response = await _discountApplication.GetAllWithPaginationAsync(pageNumber, pageSize);
 
             if (!response.IsSuccess) return BadRequest(response);
 
