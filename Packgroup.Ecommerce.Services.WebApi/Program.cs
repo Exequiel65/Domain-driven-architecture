@@ -40,19 +40,29 @@ builder.Services.AddRedisCache(builder.Configuration);
 builder.Services.AddRateLimiting(builder.Configuration);
 
 var app = builder.Build();
-
+var provider = app.Services.GetRequiredService<IApiVersionDescriptionProvider>();
 // Configure the HTTP request pipeline.
 //if (app.Environment.IsDevelopment())
 //{
-    app.UseSwagger();
-    app.UseSwaggerUI(c =>
+app.UseSwagger();
+app.UseSwaggerUI(c =>
+{
+    var provider = app.Services.GetRequiredService<IApiVersionDescriptionProvider>();
+    foreach (var description in provider.ApiVersionDescriptions)
     {
-        var provider = app.Services.GetRequiredService<IApiVersionDescriptionProvider>();
-        foreach (var description in provider.ApiVersionDescriptions)
-        {
-            c.SwaggerEndpoint($"/swagger/{description.GroupName}/swagger.json", description.GroupName.ToUpperInvariant());
-        }
-    });
+        c.SwaggerEndpoint($"/swagger/{description.GroupName}/swagger.json", description.GroupName.ToUpperInvariant());
+    }
+});
+
+// use /api-docs
+app.UseReDoc(options =>
+{
+    foreach (var description in provider.ApiVersionDescriptions)
+    {
+        options.DocumentTitle = "Packgroup Technology Services API Market";
+        options.SpecUrl = $"/swagger/{description.GroupName}/swagger.json";
+    }
+});
 //}
 
 app.UseHttpsRedirection();
