@@ -48,7 +48,7 @@ namespace Packgroup.Ecommerce.Aplication.UseCases.Discount
 
                     // Publicamos el evento
                     var discountCreatedEvent = _mapper.Map<DiscountCreatedEvent>(discount);
-                    _eventBus.Publish(discountCreatedEvent);
+                    _eventBus.Publish<DiscountCreatedEvent>(discountCreatedEvent);
                 }
 
             }

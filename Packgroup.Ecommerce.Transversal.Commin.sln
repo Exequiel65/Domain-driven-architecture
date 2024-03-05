@@ -35,7 +35,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Packgroup.Ecommerce.Transve
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Packgroup.Ecommerce.Persistence", "Packgroup.Ecommerce.Persistence\Packgroup.Ecommerce.Persistence.csproj", "{A5CFDB8B-7211-4720-8F6E-7739960E8D8A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Packgroup.Ecommerce.Infraestuctura", "Packgroup.Ecommerce.Infraestuctura\Packgroup.Ecommerce.Infraestuctura.csproj", "{7926802B-E515-4990-BD93-ABF949D55F36}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Packgroup.Ecommerce.Infraestuctura", "Packgroup.Ecommerce.Infraestuctura\Packgroup.Ecommerce.Infraestuctura.csproj", "{7926802B-E515-4990-BD93-ABF949D55F36}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Packgroup.Ecommerce.ConsoleApp.Consumer", "Packgroup.Ecommerce.Consumer\Packgroup.Ecommerce.ConsoleApp.Consumer\Packgroup.Ecommerce.ConsoleApp.Consumer.csproj", "{85129CAA-29F1-4F12-ACBC-AD5172B234ED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -87,6 +89,10 @@ Global
 		{7926802B-E515-4990-BD93-ABF949D55F36}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7926802B-E515-4990-BD93-ABF949D55F36}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7926802B-E515-4990-BD93-ABF949D55F36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{85129CAA-29F1-4F12-ACBC-AD5172B234ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85129CAA-29F1-4F12-ACBC-AD5172B234ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85129CAA-29F1-4F12-ACBC-AD5172B234ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85129CAA-29F1-4F12-ACBC-AD5172B234ED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
