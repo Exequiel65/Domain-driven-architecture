@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.1" />
-    <PackageReference Include="WatchDog.NET" Version="1.4.10" />
   </ItemGroup>
 
   <ItemGroup>

@@ -8,11 +8,9 @@ using Packgroup.Ecommerce.Services.WebApi.Modules.HealthCheck;
 using Packgroup.Ecommerce.Services.WebApi.Modules.Injection;
 using Packgroup.Ecommerce.Services.WebApi.Modules.Swagger;
 using Packgroup.Ecommerce.Services.WebApi.Modules.Versioning;
-using Packgroup.Ecommerce.Services.WebApi.Modules.Watch;
 using Packgroup.Ecommerce.Services.WebApi.Modules.Redis;
 using Packgroup.Ecommerce.Services.WebApi.Modules.RateLimiter;
 using Packgroup.Ecommerce.Infraestuctura;
-using WatchDog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -35,7 +33,6 @@ builder.Services.AddVersioning();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddHealthCheck(builder.Configuration);
-builder.Services.AddWatchDog(builder.Configuration);
 builder.Services.AddRedisCache(builder.Configuration);
 builder.Services.AddRateLimiting(builder.Configuration);
 
@@ -66,13 +63,10 @@ app.UseReDoc(options =>
 //}
 
 app.UseHttpsRedirection();
-app.UseWatchDogExceptionLogger();
 app.UseCors(FeatureExtensions.myPolicy);
-app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseRateLimiter();
-app.UseEndpoints(_ => { });
 app.MapControllers();
 app.MapHealthChecks("/health", new Microsoft.AspNetCore.Diagnostics.HealthChecks.HealthCheckOptions
 {
@@ -80,12 +74,6 @@ app.MapHealthChecks("/health", new Microsoft.AspNetCore.Diagnostics.HealthChecks
     ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
 });
 app.MapHealthChecksUI();
-
-app.UseWatchDog(conf =>
-{
-    conf.WatchPageUsername = builder.Configuration["WatchDog:WatchPageUserName"];
-    conf.WatchPagePassword = builder.Configuration["WatchDog:WatchPagePassword"];
-});
 
 app.Run();
 
