@@ -6,6 +6,7 @@ using Packgroup.Ecommerce.Aplication.Interface.UserCases;
 using Packgroup.Ecommerce.Application.Validator;
 using Packgroup.Ecommerce.Domain.Events;
 using Packgroup.Ecommerce.Transversal.Common;
+using System.Text.Json;
 
 namespace Packgroup.Ecommerce.Aplication.UseCases.Discount
 {
@@ -16,14 +17,16 @@ namespace Packgroup.Ecommerce.Aplication.UseCases.Discount
         private readonly DiscountDTOValidator _discountDTOValidator;
         private readonly IEventBus _eventBus;
         private readonly IAppLogger<DiscountApplication> _logger;
+        private readonly INotification _notification;
 
-        public DiscountApplication(IUnitOfWork unitOfWork, IMapper mapper, DiscountDTOValidator discountDTOValidator, IEventBus eventBus, IAppLogger<DiscountApplication> logger)
+        public DiscountApplication(IUnitOfWork unitOfWork, IMapper mapper, DiscountDTOValidator discountDTOValidator, IEventBus eventBus, IAppLogger<DiscountApplication> logger, INotification notification)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
             _discountDTOValidator = discountDTOValidator;
             _eventBus = eventBus;
             _logger = logger;
+            _notification = notification;
         }
 
         public Task<int> CountAsync()
@@ -56,6 +59,7 @@ namespace Packgroup.Ecommerce.Aplication.UseCases.Discount
                     // Publicamos el evento
                     var discountCreatedEvent = _mapper.Map<DiscountCreatedEvent>(discount);
                     _eventBus.Publish<DiscountCreatedEvent>(discountCreatedEvent);
+                    await _notification.SendMailAsync(response.Message, JsonSerializer.Serialize(discount), cancellationToken);
                 }
 
             }
