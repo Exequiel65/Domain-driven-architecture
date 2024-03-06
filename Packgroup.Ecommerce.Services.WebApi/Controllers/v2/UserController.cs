@@ -9,6 +9,7 @@ using Packgroup.Ecommerce.Transversal.Common;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using Asp.Versioning;
 
 namespace Packgroup.Ecommerce.Services.WebApi.Controllers.v2
 {

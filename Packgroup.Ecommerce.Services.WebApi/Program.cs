@@ -1,5 +1,5 @@
 using HealthChecks.UI.Client;
-using Microsoft.AspNetCore.Mvc.ApiExplorer;
+using Asp.Versioning.ApiExplorer;
 using Packgroup.Ecommerce.Persistence;
 using Packgroup.Ecommerce.Aplication.UseCases;
 using Packgroup.Ecommerce.Services.WebApi.Modules.Authentication;

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Packgroup.Ecommerce.Aplication.DTO;
 using Packgroup.Ecommerce.Aplication.Interface.UserCases;
+using Asp.Versioning;
 
 namespace Packgroup.Ecommerce.Services.WebApi.Controllers.v2
 {

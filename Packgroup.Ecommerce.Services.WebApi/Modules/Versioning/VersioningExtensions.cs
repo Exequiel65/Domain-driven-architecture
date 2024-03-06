@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Microsoft.AspNetCore.Mvc.Versioning;
+﻿using Asp.Versioning;
 
 namespace Packgroup.Ecommerce.Services.WebApi.Modules.Versioning
 {
@@ -9,7 +8,7 @@ namespace Packgroup.Ecommerce.Services.WebApi.Modules.Versioning
         {
             services.AddApiVersioning(o =>
             {
-                o.DefaultApiVersion = new Microsoft.AspNetCore.Mvc.ApiVersion(1, 0);
+                o.DefaultApiVersion = new ApiVersion(1, 0);
                 o.AssumeDefaultVersionWhenUnspecified = true;
                 o.ReportApiVersions = true;
 
@@ -21,13 +20,10 @@ namespace Packgroup.Ecommerce.Services.WebApi.Modules.Versioning
 
                 //Versionar por URL
                 o.ApiVersionReader = new UrlSegmentApiVersionReader();
-            });
-
-            services.AddVersionedApiExplorer(o =>
+            }).AddApiExplorer(options =>
             {
-                o.GroupNameFormat = "'v'VVV";
-                //para versionar por URL
-                o.SubstituteApiVersionInUrl = true;
+                options.GroupNameFormat = "'v'VVV";
+                options.SubstituteApiVersionInUrl = true;
             });
 
             return services;

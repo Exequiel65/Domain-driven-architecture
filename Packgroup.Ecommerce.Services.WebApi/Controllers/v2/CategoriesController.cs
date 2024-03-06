@@ -5,7 +5,7 @@ using Packgroup.Ecommerce.Aplication.Interface.UserCases;
 using Packgroup.Ecommerce.Transversal.Common;
 using Swashbuckle.AspNetCore.Annotations;
 using Packgroup.Ecommerce.Aplication.DTO;
-
+using Asp.Versioning;
 namespace Packgroup.Ecommerce.Services.WebApi.Controllers.v2
 {
     [Authorize]
