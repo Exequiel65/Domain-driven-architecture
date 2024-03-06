@@ -39,6 +39,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Packgroup.Ecommerce.Infraes
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Packgroup.Ecommerce.ConsoleApp.Consumer", "Packgroup.Ecommerce.Consumer\Packgroup.Ecommerce.ConsoleApp.Consumer\Packgroup.Ecommerce.ConsoleApp.Consumer.csproj", "{85129CAA-29F1-4F12-ACBC-AD5172B234ED}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Elementos de la solución", "Elementos de la solución", "{57CCA428-C9B8-453A-9990-BBE652690BBF}"
+	ProjectSection(SolutionItems) = preProject
+		Readme.md = Readme.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
