@@ -48,11 +48,6 @@ namespace Packgroup.Ecommerce.Aplication.UseCases.Users
                 _logger.LogWarning("Usuario no existe");
                 _logger.LogWarning(ex.Message);
             }
-            catch (Exception e)
-            {
-                response.Message = e.Message;
-                _logger.LogError(e.Message);
-            }
             return response;
         }
     }

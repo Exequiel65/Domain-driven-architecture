@@ -27,124 +27,87 @@ namespace Packgroup.Ecommerce.Aplication.UseCases.Customers
         public Response<bool> Insert(CustomerDTO customerDTO)
         {
             var response = new Response<bool>();
-            try
+
+            var customer = _mapper.Map<Customer>(customerDTO);
+            response.Data = _unitOfWork.CustomerRepository.Insert(customer);
+            if (response.Data)
             {
-                var customer = _mapper.Map<Customer>(customerDTO);
-                response.Data = _unitOfWork.CustomerRepository.Insert(customer);
-                if (response.Data)
-                {
-                    response.IsSuccess = true;
-                    response.Message = "Registro Exitoso!!";
-                }
-            }
-            catch (Exception e)
-            {
-                response.Message = e.Message;
+                response.IsSuccess = true;
+                response.Message = "Registro Exitoso!!";
             }
             return response;
         }
         public Response<bool> Update(CustomerDTO customerDTO)
         {
             var response = new Response<bool>();
-            try
+            var customer = _mapper.Map<Customer>(customerDTO);
+            response.Data = _unitOfWork.CustomerRepository.Update(customer);
+            if (response.Data)
             {
-                var customer = _mapper.Map<Customer>(customerDTO);
-                response.Data = _unitOfWork.CustomerRepository.Update(customer);
-                if (response.Data)
-                {
-                    response.IsSuccess = true;
-                    response.Message = "Actualización Exitosa!!";
-                }
-            }
-            catch (Exception e)
-            {
-                response.Message = e.Message;
+                response.IsSuccess = true;
+                response.Message = "Actualización Exitosa!!";
             }
             return response;
         }
         public Response<bool> Delete(string customerId)
         {
             var response = new Response<bool>();
-            try
+            response.Data = _unitOfWork.CustomerRepository.Delete(customerId);
+            if (response.Data)
             {
-                response.Data = _unitOfWork.CustomerRepository.Delete(customerId);
-                if (response.Data)
-                {
-                    response.IsSuccess = true;
-                    response.Message = "Borrado Exitoso!!";
-                }
-            }
-            catch (Exception e)
-            {
-                response.Message = e.Message;
+                response.IsSuccess = true;
+                response.Message = "Borrado Exitoso!!";
             }
             return response;
         }
         public Response<CustomerDTO> Get(string customerId)
         {
             var response = new Response<CustomerDTO>();
-            try
+
+            var customer = _unitOfWork.CustomerRepository.Get(customerId);
+            response.Data = _mapper.Map<CustomerDTO>(customer);
+            if (response.Data != null)
             {
-                var customer = _unitOfWork.CustomerRepository.Get(customerId);
-                response.Data = _mapper.Map<CustomerDTO>(customer);
-                if (response.Data != null)
-                {
-                    response.IsSuccess = true;
-                    response.Message = "Consulta Exitosa!!";
-                }
+                response.IsSuccess = true;
+                response.Message = "Consulta Exitosa!!";
             }
-            catch (Exception e)
-            {
-                response.Message = e.Message;
-            }
+
             return response;
         }
         public Response<IEnumerable<CustomerDTO>> GetAll()
         {
             var response = new Response<IEnumerable<CustomerDTO>>();
-            try
+
+            var listCustomers = _unitOfWork.CustomerRepository.GetAll();
+            response.Data = _mapper.Map<IEnumerable<CustomerDTO>>(listCustomers);
+            if (response.Data != null)
             {
-                var listCustomers = _unitOfWork.CustomerRepository.GetAll();
-                response.Data = _mapper.Map<IEnumerable<CustomerDTO>>(listCustomers);
-                if (response.Data != null)
-                {
-                    response.IsSuccess = true;
-                    response.Message = "Consulta Exitosa!!";
-                    _logger.LogInformation("Consulta Exitosa!!");
-                }
+                response.IsSuccess = true;
+                response.Message = "Consulta Exitosa!!";
+                _logger.LogInformation("Consulta Exitosa!!");
             }
-            catch (Exception e)
-            {
-                response.Message = e.Message;
-                _logger.LogInformation($"{e.Message}");
-            }
+
             return response;
         }
 
         public ResponsePagination<IEnumerable<CustomerDTO>> GetAllWithPagination(int pageNumber, int pageSize)
         {
             var response = new ResponsePagination<IEnumerable<CustomerDTO>>();
-            try
-            {
-                var count = _unitOfWork.CustomerRepository.Count();
-                var customers = _unitOfWork.CustomerRepository.GetAllWithPagination(pageNumber, pageSize);
-                response.Data = _mapper.Map<IEnumerable<CustomerDTO>>(customers);
 
-                if (response.Data != null)
-                {
-                    response.PageNumber = pageNumber;
-                    response.TotalPage = (int)Math.Ceiling(count / (double)pageSize);
-                    response.TotalCount = count;
-                    response.IsSuccess = true;
-                    response.Message = "Consulta Paginada Exitosa!!";
+            var count = _unitOfWork.CustomerRepository.Count();
+            var customers = _unitOfWork.CustomerRepository.GetAllWithPagination(pageNumber, pageSize);
+            response.Data = _mapper.Map<IEnumerable<CustomerDTO>>(customers);
 
-                }
-            }
-            catch (Exception e)
+            if (response.Data != null)
             {
-                response.Message = e.Message;
-                _logger.LogInformation($"{e.Message}");
+                response.PageNumber = pageNumber;
+                response.TotalPage = (int)Math.Ceiling(count / (double)pageSize);
+                response.TotalCount = count;
+                response.IsSuccess = true;
+                response.Message = "Consulta Paginada Exitosa!!";
+
             }
+
             return response;
         }
 
@@ -155,122 +118,91 @@ namespace Packgroup.Ecommerce.Aplication.UseCases.Customers
         public async Task<Response<bool>> InsertAsync(CustomerDTO customerDto)
         {
             var response = new Response<bool>();
-            try
+
+            var customer = _mapper.Map<Customer>(customerDto);
+            response.Data = await _unitOfWork.CustomerRepository.InsertAsync(customer);
+            if (response.Data)
             {
-                var customer = _mapper.Map<Customer>(customerDto);
-                response.Data = await _unitOfWork.CustomerRepository.InsertAsync(customer);
-                if (response.Data)
-                {
-                    response.IsSuccess = true;
-                    response.Message = "Registro Exitoso!!";
-                }
+                response.IsSuccess = true;
+                response.Message = "Registro Exitoso!!";
             }
-            catch (Exception e)
-            {
-                response.Message = e.Message;
-            }
+
             return response;
         }
         public async Task<Response<bool>> UpdateAsync(CustomerDTO customerDTO)
         {
             var response = new Response<bool>();
-            try
+
+            var customer = _mapper.Map<Customer>(customerDTO);
+            response.Data = await _unitOfWork.CustomerRepository.UpdateAsync(customer);
+            if (response.Data)
             {
-                var customer = _mapper.Map<Customer>(customerDTO);
-                response.Data = await _unitOfWork.CustomerRepository.UpdateAsync(customer);
-                if (response.Data)
-                {
-                    response.IsSuccess = true;
-                    response.Message = "Actualización Exitosa!!";
-                }
+                response.IsSuccess = true;
+                response.Message = "Actualización Exitosa!!";
             }
-            catch (Exception e)
-            {
-                response.Message = e.Message;
-            }
+
             return response;
         }
         public async Task<Response<bool>> DeleteAsync(string customerId)
         {
             var response = new Response<bool>();
-            try
+
+            response.Data = await _unitOfWork.CustomerRepository.DeleteAsync(customerId);
+            if (response.Data)
             {
-                response.Data = await _unitOfWork.CustomerRepository.DeleteAsync(customerId);
-                if (response.Data)
-                {
-                    response.IsSuccess = true;
-                    response.Message = "Borrado Exitoso!!";
-                }
+                response.IsSuccess = true;
+                response.Message = "Borrado Exitoso!!";
             }
-            catch (Exception e)
-            {
-                response.Message = e.Message;
-            }
+
             return response;
         }
         public async Task<Response<CustomerDTO>> GetAsync(string customerId)
         {
             var response = new Response<CustomerDTO>();
-            try
+
+            var customer = await _unitOfWork.CustomerRepository.GetAsync(customerId);
+            response.Data = _mapper.Map<CustomerDTO>(customer);
+            if (response.Data != null)
             {
-                var customer = await _unitOfWork.CustomerRepository.GetAsync(customerId);
-                response.Data = _mapper.Map<CustomerDTO>(customer);
-                if (response.Data != null)
-                {
-                    response.IsSuccess = true;
-                    response.Message = "Consulta Exitosa!!";
-                }
+                response.IsSuccess = true;
+                response.Message = "Consulta Exitosa!!";
             }
-            catch (Exception e)
-            {
-                response.Message = e.Message;
-            }
+
             return response;
         }
         public async Task<Response<IEnumerable<CustomerDTO>>> GetAllAsync()
         {
             var response = new Response<IEnumerable<CustomerDTO>>();
-            try
+
+            var listCustomers = await _unitOfWork.CustomerRepository.GetAllAsync();
+            response.Data = _mapper.Map<IEnumerable<CustomerDTO>>(listCustomers);
+            if (response.Data != null)
             {
-                var listCustomers = await _unitOfWork.CustomerRepository.GetAllAsync();
-                response.Data = _mapper.Map<IEnumerable<CustomerDTO>>(listCustomers);
-                if (response.Data != null)
-                {
-                    response.IsSuccess = true;
-                    response.Message = "Consulta Exitosa!!";
-                }
+                response.IsSuccess = true;
+                response.Message = "Consulta Exitosa!!";
             }
-            catch (Exception e)
-            {
-                response.Message = e.Message;
-            }
+
             return response;
         }
 
         public async Task<ResponsePagination<IEnumerable<CustomerDTO>>> GetAllWithPaginationAsync(int pageNumber, int pageSize)
         {
             var response = new ResponsePagination<IEnumerable<CustomerDTO>>();
-            try
-            {
-                var count = await _unitOfWork.CustomerRepository.CountAsync();
-                var customers = await _unitOfWork.CustomerRepository.GetAllWithPaginationAsync(pageNumber, pageSize);
-                response.Data = _mapper.Map<IEnumerable<CustomerDTO>>(customers);
 
-                if (response.Data != null)
-                {
-                    response.PageNumber = pageNumber;
-                    response.TotalPage = (int)Math.Ceiling(count / (double)pageSize);
-                    response.TotalCount = count;
-                    response.IsSuccess = true;
-                    response.Message = "Consulta Paginada Exitosa!!";
+            var count = await _unitOfWork.CustomerRepository.CountAsync();
+            var customers = await _unitOfWork.CustomerRepository.GetAllWithPaginationAsync(pageNumber, pageSize);
+            response.Data = _mapper.Map<IEnumerable<CustomerDTO>>(customers);
 
-                }
-            }
-            catch (Exception e)
+            if (response.Data != null)
             {
-                response.Message = e.Message;
-                _logger.LogInformation($"{e.Message}");
+                response.PageNumber = pageNumber;
+                response.TotalPage = (int)Math.Ceiling(count / (double)pageSize);
+                response.TotalCount = count;
+                response.IsSuccess = true;
+                response.Message = "Consulta Paginada Exitosa!!";
+
             }
+
             return response;
         }
 

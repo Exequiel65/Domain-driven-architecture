@@ -11,6 +11,7 @@ using Packgroup.Ecommerce.Services.WebApi.Modules.Versioning;
 using Packgroup.Ecommerce.Services.WebApi.Modules.Redis;
 using Packgroup.Ecommerce.Services.WebApi.Modules.RateLimiter;
 using Packgroup.Ecommerce.Infraestuctura;
+using Packgroup.Ecommerce.Services.WebApi.Modules.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -74,7 +75,7 @@ app.MapHealthChecks("/health", new Microsoft.AspNetCore.Diagnostics.HealthChecks
     ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
 });
 app.MapHealthChecksUI();
-
+app.AddMiddleware();
 app.Run();
 
 

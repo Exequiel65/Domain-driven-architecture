@@ -30,38 +30,32 @@ namespace Packgroup.Ecommerce.Aplication.UseCases.Categories
             var response = new Response<IEnumerable<CategorieDto>>();
             var cacheKey = "categoriesList";
 
-            try
+
+            var redisCategories = await _cache.GetAsync(cacheKey);
+            if (redisCategories != null)
             {
-                var redisCategories = await _cache.GetAsync(cacheKey);
-                if (redisCategories != null)
-                {
-                    response.Data = JsonSerializer.Deserialize<IEnumerable<CategorieDto>>(redisCategories);
-                }
-                else
-                {
-                    var categories = await _unitOfWork.Categories.GetAllAsync();
-                    response.Data = _mapper.Map<IEnumerable<CategorieDto>>(categories);
-                    if (response.Data != null)
-                    {
-                        var serializedCategories = Encoding.UTF8.GetBytes(JsonSerializer.Serialize(response.Data));
-                        var options = new DistributedCacheEntryOptions().SetAbsoluteExpiration(DateTime.Now.AddHours(8))
-                            .SetSlidingExpiration(TimeSpan.FromMinutes(60));
-
-                        await _cache.SetAsync(cacheKey, serializedCategories, options);
-                    }
-                }
-
+                response.Data = JsonSerializer.Deserialize<IEnumerable<CategorieDto>>(redisCategories);
+            }
+            else
+            {
+                var categories = await _unitOfWork.Categories.GetAllAsync();
+                response.Data = _mapper.Map<IEnumerable<CategorieDto>>(categories);
                 if (response.Data != null)
                 {
-                    response.IsSuccess = true;
-                    response.Message = "Consulta Exitosa!!";
-                }
+                    var serializedCategories = Encoding.UTF8.GetBytes(JsonSerializer.Serialize(response.Data));
+                    var options = new DistributedCacheEntryOptions().SetAbsoluteExpiration(DateTime.Now.AddHours(8))
+                        .SetSlidingExpiration(TimeSpan.FromMinutes(60));
 
+                    await _cache.SetAsync(cacheKey, serializedCategories, options);
+                }
             }
-            catch (Exception e)
+
+            if (response.Data != null)
             {
-                response.Message = e.Message;
+                response.IsSuccess = true;
+                response.Message = "Consulta Exitosa!!";
             }
+
             return response;
         }
     }
