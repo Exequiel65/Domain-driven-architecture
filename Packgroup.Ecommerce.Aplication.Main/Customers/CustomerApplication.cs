@@ -4,9 +4,6 @@ using Packgroup.Ecommerce.Aplication.Interface.Persistence;
 using Packgroup.Ecommerce.Aplication.Interface.UserCases;
 using Packgroup.Ecommerce.Domain.Entities;
 using Packgroup.Ecommerce.Transversal.Common;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace Packgroup.Ecommerce.Aplication.UseCases.Customers
 {
