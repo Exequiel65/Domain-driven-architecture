@@ -2,13 +2,7 @@
 using MediatR;
 using Packgroup.Ecommerce.Aplication.DTO;
 using Packgroup.Ecommerce.Aplication.Interface.Persistence;
-using Packgroup.Ecommerce.Application.Validator;
 using Packgroup.Ecommerce.Transversal.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Packgroup.Ecommerce.Aplication.UseCases.Users.Commands.CreateUserTokenCommand
 {
