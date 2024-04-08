@@ -16,7 +16,7 @@ namespace Packgroup.Ecommerce.Persistence.Repositories
         {
             _context = context;
         }
-        public User Authenticate(string username, string password)
+        public async Task<User> Authenticate(string username, string password)
         {
             using (var connection = _context.CreateConnection())
             {
@@ -25,7 +25,7 @@ namespace Packgroup.Ecommerce.Persistence.Repositories
                 parameters.Add("Username", username);
                 parameters.Add("Password", password);
 
-                var user = connection.QuerySingle<User>(query, param: parameters, commandType: CommandType.StoredProcedure);
+                var user = await connection.QuerySingleOrDefaultAsync<User>(query, param: parameters, commandType: CommandType.StoredProcedure);
                 return user;
 
             }

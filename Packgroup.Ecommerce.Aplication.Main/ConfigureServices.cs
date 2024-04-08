@@ -6,6 +6,7 @@ using Packgroup.Ecommerce.Aplication.UseCases.Customers;
 using Packgroup.Ecommerce.Aplication.UseCases.Discount;
 using Packgroup.Ecommerce.Aplication.UseCases.Users;
 using Packgroup.Ecommerce.Application.Validator;
+using System.Reflection;
 
 namespace Packgroup.Ecommerce.Aplication.UseCases
 {
@@ -13,6 +14,9 @@ namespace Packgroup.Ecommerce.Aplication.UseCases
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
+            services.AddMediatR(cfg => 
+                cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly())
+            );
             services.AddAutoMapper(typeof(MappingsProfile));
             services.AddScoped<ICustomerApplication, CustomerApplication>();
             services.AddScoped<IUsersApplication, UserApplication>();
